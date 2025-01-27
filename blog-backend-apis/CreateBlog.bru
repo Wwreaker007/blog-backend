@@ -1,0 +1,23 @@
+meta {
+  name: CreateBlog
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:9000/create/blog
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "ABC",
+    "content": "asdinaosfb asindfaosifn oasbfoa ksfbaosfbna josfn aksfnpa bsfnpa ksnfmasfinasokfn asf asfpnasfojna psfnb apifsn aspofn apsifn apsfn aposfn aopsnfpaogbnapsnd asd asd. adsn aosibd oaisdnb obfoasknd oasbd oasindp sadn fiasjf pasnd asd.",
+    "tags": [
+      "design",
+      "leadership",
+      "technology"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+meta {
+  name: UpdateBlog
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:9000/update/blog/id
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "blog_id": 12,
+    "blog_data": {
+      "title": "ABC",
+      "content": "asdinaosfb asindfaosifn oasbfoa ksfbaosfbna josfn aksfnpa bsfnpa ksnfmasfinasokfn asf asfpnasfojna psfnb apifsn aspofn apsifn apsfn aposfn aopsnfpaogbnapsnd asd asd. adsn aosibd oaisdnb obfoasknd oasbd oasindp sadn fiasjf pasnd asd. ads asjidnbasodn apsdm oafbas fpoasmf pasonfp aos. afn aspfansf asfoa snifmas ifopi asbnfp oasf",
+      "tags": [
+        "design",
+        "leadership",
+        "technology",
+        "education"
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+meta {
+  name: DeleteBlog
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:9000/delete/blog/id
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "blog_id" : 12
+  }
+}

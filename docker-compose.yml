@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: alluka
+      POSTGRES_PASSWORD: akulla
+      POSTGRES_DB: blog-backend
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  migrate:
+    image: golang:1.23-alpine
+    volumes:
+      - ./migrations:/migrations
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: alluka
+      DB_PASSWORD: akulla
+      DB_NAME: blog-backend
+    entrypoint: 
+      - /bin/sh
+      - -c
+      - |
+        go install github.com/pressly/goose/v3/cmd/goose@latest && \
+        goose -dir /migrations postgres "postgres://alluka:akulla@postgres:5432/blog-backend?sslmode=disable" up
+    depends_on:
+      - postgres
+
+  blog-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - migrate
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: alluka
+      DB_PSWD: akulla
+      DB_NAME: blog-backend
+    ports:
+      - "9000:9000"
+
+volumes:
+  postgres-data:

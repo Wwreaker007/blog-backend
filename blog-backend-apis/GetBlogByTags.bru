@@ -1,0 +1,17 @@
+meta {
+  name: GetBlogByTags
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:9000/get/blog/tags
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "tags" : ["education"]
+  }
+}

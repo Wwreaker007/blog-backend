@@ -1,0 +1,17 @@
+meta {
+  name: GetBlogByID
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:9000/get/blog/id
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "blog_id" : 20
+  }
+}
